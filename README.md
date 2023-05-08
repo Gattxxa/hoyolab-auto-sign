@@ -1,12 +1,11 @@
 <h1 align="center">
-    <img width="120" height="120" src="pic/logo.svg" alt=""><br>
+    <img width="120" height="120" src="./pic/logo.svg" alt=""><br>
     hoyolab-auto-sign
 </h1>
 
 <p align="center">
     <img src="https://img.shields.io/github/license/canaria3406/hoyolab-auto-sign">
     <img src="https://img.shields.io/github/stars/canaria3406/hoyolab-auto-sign">
-    <br><a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README_zh-tw.md">繁體中文</a>．<a href="https://github.com/canaria3406/hoyolab-auto-sign/blob/main/README.md">English</a>
 </p>
 
 A lightweight, secure, and free script that automatically collect Hoyolab daily check in rewards.  
@@ -21,11 +20,11 @@ Supports Genshin Impact, Honkai Impact 3rd, and Honkai: Star Rail.
 ## Demo
 If the auto check in process is success, it will send "OK".  
 If you have already check in today, it will send "Traveler/Trailblazer/Captain, you've already checked in today"
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/01.png)
+![image](./pic/01.png)
 
 ## Setup
 1. Go to [Google App Script](https://script.google.com/home/start) and create a new project with your custom name.
-2. Select the editor and [paste the code](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/src/main.gs). Refer to the instructions below to configure the config file and save it.
+2. Select the editor and [paste the code](./src/main.gs). Refer to the instructions below to configure the config file and save it.
 3. Select "main" and click the "Run" button at the top.  
    Grant the necessary permissions and confirm that the configuration is correct (Execution started > completed).
 4. Click the trigger button on the left side and add a new trigger.  
@@ -36,28 +35,27 @@ If you have already check in today, it will send "Traveler/Trailblazer/Captain, 
 
 ## Configuration
 
-```javascript
-const token = ""
+```
+const token = "ltoken=aBcDeFgHiJkLmNoPqRsTuVwXyZ; ltuid=0123456789;"
 
 const genshin = true
-const honkai_star_rail = true
 const honkai_3 = false
+const honkai_star_rail = false
 
-const discord_notify = true
+const discordWebhook = "https://discord.com/api/webhooks/0123456789/aBcDeFgHiJkLmNoPqRsTuVwXyZ"
 const myDiscordID = ""
-const myDiscordName = "YOUR NICKNAME"
-const discordWebhook = ""
+const myDiscordName = ""
 ```
 
 1. **token** - Please enter the token for hoyolab check-in page.
 
    After entering the [hoyolab check-in page](https://www.hoyolab.com/circles), press F12 to enter the console.  
    Paste the following code and run it to get the token. Copy the token and fill it in "quotes".
-   ```javascript
-   function getCookie(name) {
-   const value = `; ${document.cookie}`;
-   const parts = value.split(`; ${name}=`);
-   if (parts.length === 2) return parts.pop().split(';').shift();
+   ```javascript:getToken.js
+   function getCookie(param) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${param}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
    }
    console.log('ltoken='+getCookie('ltoken')+'; ltuid='+getCookie('ltuid')+';');
    ```
@@ -102,12 +100,13 @@ const discordWebhook = ""
 
 ## Example
 Enable Honkai Impact 3rd auto check in, enable Discord notify, do not tag in Discord.
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/02.png)
+![image](./pic/02.png)
 
 Enable Genshin Impact and Honkai: Star Rail auto check in, enable Discord notify, tag in Discord.
-![image](https://github.com/canaria3406/hoyolab-auto-sign/blob/main/pic/03.png)
+![image](./pic/03.png)
 
 ## Change Log
 2022-12-30 Project launched.  
 2023-04-27 Add support for Honkai Impact 3rd, and Honkai: Star Rail.  
 2023-04-27 Add switch for Discord notify.  
+2023-05-08 Edit.
